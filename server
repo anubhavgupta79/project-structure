@@ -50,4 +50,13 @@ app.listen(PORT, () => {
     "start": "node dist/server.js"
   },
   // make sure your name in "main": "dist/server.js" same in your script acc to your server name 
+8.// now change app.get in server.ts in this code
+// Asli API Route (JSON bhejega)
+app.get('/api/test', (req: Request, res: Response) => {
+  res.json({ 
+    success: true, 
+    message: 'Backend se Data successfully aa gaya hai bhai! 🚀',
+    totalUsers: 105
+  });
+});
 
