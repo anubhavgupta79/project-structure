@@ -1,0 +1,17 @@
+// 1. Prisma ko batao ki hum PostgreSQL use kar rahe hain
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 2. Table ka structure (Model)
+model Article {
+  id        String   @id @default(uuid())
+  topic     String
+  content   String
+  createdAt DateTime @default(now())
+}
