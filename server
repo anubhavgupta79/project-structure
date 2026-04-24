@@ -1,0 +1,53 @@
+first create another folder iner of main branches
+// now make the server step by step
+1. run in server terminal 
+npm init -y
+2.npm install express cors dotenv
+3.npm install -D typescript @types/node @types/express @types/cors ts-node nodemon
+//. if you use typescript in your project  then run in terminal
+4.npx tsc --init
+5. change the tsconfig file in this code 
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"]
+}
+6. now making in the server src type name of you server is server.ts (add the code)
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+// 1. Setup
+dotenv.config();
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// 2. Middlewares (Security & JSON format)
+app.use(cors());
+app.use(express.json()); 
+
+// 3. Routes (URL par jane se kya hoga)
+app.get('/', (req: Request, res: Response) => {
+  res.send('Server is running perfectly! 🚀');
+});
+
+// 4. Server Start command
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+7. in package.josn chnge the sript by this code 
+"scripts": {
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  // make sure your name in "main": "dist/server.js" same in your script acc to your server name 
+
