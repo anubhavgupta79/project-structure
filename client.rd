@@ -45,3 +45,5 @@ function App() {
 }
 
 export default App;
+// axios ko install karege apna frontend cerver se connect karne ka liye
+npm install axios
